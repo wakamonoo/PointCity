@@ -1,7 +1,7 @@
 {
   "name": "PointCity – Basketball Stat Tracker",
   "short_name": "PointCity",
-  "description": "Track every play — minimal • futuristic • responsive",
+  "description": "Your game. Your stats. In your hands.",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#0f0f0f",
