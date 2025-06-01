@@ -38,7 +38,7 @@ self.addEventListener("fetch", (event) => {
         return response;
       }
 
-      // No cache hit - fetch from the network
+      // No cache hit - try to fetch from the network
       console.log("[Service Worker] Fetching from network:", event.request.url);
       return fetch(event.request)
         .then((response) => {
@@ -63,9 +63,9 @@ self.addEventListener("fetch", (event) => {
           return response;
         })
         .catch((error) => {
-          console.error("[Service Worker] Fetch failed:", error);
-          // You could return an offline page here if desired
-          // return caches.match('/offline.html');
+          // If network fetch fails (e.g., offline), try to return the cached index.html
+          console.error("[Service Worker] Fetch failed, attempting fallback:", error);
+          return caches.match("/index.html"); // Fallback to the main HTML file
         });
     })
   );
